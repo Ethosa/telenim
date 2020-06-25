@@ -1,0 +1,6 @@
+nimcache/
+nimblecache/
+htmldocs/
+
+*.log
+*.exe
