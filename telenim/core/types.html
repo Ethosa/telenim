@@ -229,6 +229,10 @@ function main() {
     title="newUser(obj: JsonNode): User"><wbr />new<wbr />User<span class="attachedType">User</span></a></li>
   <li><a class="reference" href="#newChat%2CJsonNode"
     title="newChat(obj: JsonNode): Chat"><wbr />new<wbr />Chat<span class="attachedType">Chat</span></a></li>
+  <li><a class="reference" href="#newLocation%2CJsonNode"
+    title="newLocation(obj: JsonNode): Location"><wbr />new<wbr />Location<span class="attachedType">Location</span></a></li>
+  <li><a class="reference" href="#newVenue%2CJsonNode"
+    title="newVenue(obj: JsonNode): Venue"><wbr />new<wbr />Venue<span class="attachedType">Venue</span></a></li>
   <li><a class="reference" href="#newMessage%2CJsonNode"
     title="newMessage(obj: JsonNode): Message"><wbr />new<wbr />Message<span class="attachedType">Message</span></a></li>
   <li><a class="reference" href="#newUpdate%2CJsonNode"
@@ -464,28 +468,42 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#newUser%2CJsonNode"><span class="Identifier">newUser</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#User"><span class="Identifier">User</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Creates a new User object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
 
 </dd>
 <a id="newChat,JsonNode"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#newChat%2CJsonNode"><span class="Identifier">newChat</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Chat"><span class="Identifier">Chat</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+Creates a new Chat object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
 
+</dd>
+<a id="newLocation,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newLocation%2CJsonNode"><span class="Identifier">newLocation</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Location"><span class="Identifier">Location</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Location object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
+<a id="newVenue,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newVenue%2CJsonNode"><span class="Identifier">newVenue</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Venue"><span class="Identifier">Venue</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Venue object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
 
 </dd>
 <a id="newMessage,JsonNode"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#newMessage%2CJsonNode"><span class="Identifier">newMessage</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Message"><span class="Identifier">Message</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Creates a new Message object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
 
 </dd>
 <a id="newUpdate,JsonNode"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#newUpdate%2CJsonNode"><span class="Identifier">newUpdate</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Update"><span class="Identifier">Update</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Creates a new Update object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
 
 </dd>
 
@@ -498,7 +516,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-26 08:18:22 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-26 08:52:40 UTC</small>
       </div>
     </div>
   </div>
