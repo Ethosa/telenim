@@ -1,0 +1,19 @@
+ChatType	telenim/core/types.html#ChatType	types: ChatType	
+User	telenim/core/types.html#User	types: User	
+Chat	telenim/core/types.html#Chat	types: Chat	
+Message	telenim/core/types.html#Message	types: Message	
+MessageEntity	telenim/core/types.html#MessageEntity	types: MessageEntity	
+PhotoSize	telenim/core/types.html#PhotoSize	types: PhotoSize	
+Audio	telenim/core/types.html#Audio	types: Audio	
+Document	telenim/core/types.html#Document	types: Document	
+Sticker	telenim/core/types.html#Sticker	types: Sticker	
+Video	telenim/core/types.html#Video	types: Video	
+Voice	telenim/core/types.html#Voice	types: Voice	
+Contact	telenim/core/types.html#Contact	types: Contact	
+Location	telenim/core/types.html#Location	types: Location	
+Venue	telenim/core/types.html#Venue	types: Venue	
+Update	telenim/core/types.html#Update	types: Update	
+newUser	telenim/core/types.html#newUser,JsonNode	types: newUser(obj: JsonNode): User	
+newChat	telenim/core/types.html#newChat,JsonNode	types: newChat(obj: JsonNode): Chat	
+newMessage	telenim/core/types.html#newMessage,JsonNode	types: newMessage(obj: JsonNode): Message	
+newUpdate	telenim/core/types.html#newUpdate,JsonNode	types: newUpdate(obj: JsonNode): Update	

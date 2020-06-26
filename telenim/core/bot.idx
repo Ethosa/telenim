@@ -1,0 +1,13 @@
+TelegramMessageHandler	telenim/core/bot.html#TelegramMessageHandler	bot: TelegramMessageHandler	
+TelegramUpdateHandler	telenim/core/bot.html#TelegramUpdateHandler	bot: TelegramUpdateHandler	
+TelegramJsonHandler	telenim/core/bot.html#TelegramJsonHandler	bot: TelegramJsonHandler	
+TelegramApiRef	telenim/core/bot.html#TelegramApiRef	bot: TelegramApiRef	
+tmessage_handler	telenim/core/bot.html#tmessage_handler	bot: tmessage_handler	
+tupdate_handler	telenim/core/bot.html#tupdate_handler	bot: tupdate_handler	
+tjson_handler	telenim/core/bot.html#tjson_handler	bot: tjson_handler	
+TelegramApi	telenim/core/bot.html#TelegramApi,string	bot: TelegramApi(access_token: string): TelegramApiRef	
+callMethod	telenim/core/bot.html#callMethod,TelegramApiRef,string,JsonNode	bot: callMethod(self: TelegramApiRef; method_name: string; args: JsonNode = %*{}): Future[\n    JsonNode]	
+pollEvents	telenim/core/bot.html#pollEvents.i,TelegramApiRef	bot: pollEvents(self: TelegramApiRef): JsonNode	
+`~`	telenim/core/bot.html#~.m,TelegramApiRef,untyped	bot: `~`(o: TelegramApiRef; callable: untyped): untyped	
+`@`	telenim/core/bot.html#@.m,TelegramApiRef,untyped,untyped	bot: `@`(o: TelegramApiRef; field, stmtlist: untyped): untyped	
+listen	telenim/core/bot.html#listen.t,TelegramApiRef	bot: listen(o: TelegramApiRef): untyped	
