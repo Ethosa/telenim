@@ -16,6 +16,10 @@ Update	telenim/core/types.html#Update	types: Update
 newUser	telenim/core/types.html#newUser,JsonNode	types: newUser(obj: JsonNode): User	
 newChat	telenim/core/types.html#newChat,JsonNode	types: newChat(obj: JsonNode): Chat	
 newPhotoSize	telenim/core/types.html#newPhotoSize,JsonNode	types: newPhotoSize(obj: JsonNode): PhotoSize	
+newMessageEntities	telenim/core/types.html#newMessageEntities,JsonNode	types: newMessageEntities(obj: JsonNode): MessageEntity	
+newAudio	telenim/core/types.html#newAudio,JsonNode	types: newAudio(obj: JsonNode): Audio	
+newDocument	telenim/core/types.html#newDocument,JsonNode	types: newDocument(obj: JsonNode): Document	
+newSticker	telenim/core/types.html#newSticker,JsonNode	types: newSticker(obj: JsonNode): Sticker	
 newVideo	telenim/core/types.html#newVideo,JsonNode	types: newVideo(obj: JsonNode): Video	
 newVoice	telenim/core/types.html#newVoice,JsonNode	types: newVoice(obj: JsonNode): Voice	
 newContact	telenim/core/types.html#newContact,JsonNode	types: newContact(obj: JsonNode): Contact	

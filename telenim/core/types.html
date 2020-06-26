@@ -231,6 +231,14 @@ function main() {
     title="newChat(obj: JsonNode): Chat"><wbr />new<wbr />Chat<span class="attachedType">Chat</span></a></li>
   <li><a class="reference" href="#newPhotoSize%2CJsonNode"
     title="newPhotoSize(obj: JsonNode): PhotoSize"><wbr />new<wbr />Photo<wbr />Size<span class="attachedType">PhotoSize</span></a></li>
+  <li><a class="reference" href="#newMessageEntities%2CJsonNode"
+    title="newMessageEntities(obj: JsonNode): MessageEntity"><wbr />new<wbr />Message<wbr />Entities<span class="attachedType">MessageEntity</span></a></li>
+  <li><a class="reference" href="#newAudio%2CJsonNode"
+    title="newAudio(obj: JsonNode): Audio"><wbr />new<wbr />Audio<span class="attachedType">Audio</span></a></li>
+  <li><a class="reference" href="#newDocument%2CJsonNode"
+    title="newDocument(obj: JsonNode): Document"><wbr />new<wbr />Document<span class="attachedType">Document</span></a></li>
+  <li><a class="reference" href="#newSticker%2CJsonNode"
+    title="newSticker(obj: JsonNode): Sticker"><wbr />new<wbr />Sticker<span class="attachedType">Sticker</span></a></li>
   <li><a class="reference" href="#newVideo%2CJsonNode"
     title="newVideo(obj: JsonNode): Video"><wbr />new<wbr />Video<span class="attachedType">Video</span></a></li>
   <li><a class="reference" href="#newVoice%2CJsonNode"
@@ -493,6 +501,34 @@ Creates a new Chat object from <tt class="docutils literal"><span class="pre">ob
 Creates a new PhotoSize from <tt class="docutils literal"><span class="pre">obj</span></tt>.
 
 </dd>
+<a id="newMessageEntities,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newMessageEntities%2CJsonNode"><span class="Identifier">newMessageEntities</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#MessageEntity"><span class="Identifier">MessageEntity</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new MessageEntity object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
+<a id="newAudio,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newAudio%2CJsonNode"><span class="Identifier">newAudio</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Audio"><span class="Identifier">Audio</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Audio object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
+<a id="newDocument,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newDocument%2CJsonNode"><span class="Identifier">newDocument</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Document"><span class="Identifier">Document</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Document object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
+<a id="newSticker,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newSticker%2CJsonNode"><span class="Identifier">newSticker</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Sticker"><span class="Identifier">Sticker</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Sticker object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
 <a id="newVideo,JsonNode"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#newVideo%2CJsonNode"><span class="Identifier">newVideo</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Video"><span class="Identifier">Video</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -552,7 +588,7 @@ Creates a new Update object from <tt class="docutils literal"><span class="pre">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-26 09:17:30 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-26 09:59:31 UTC</small>
       </div>
     </div>
   </div>
