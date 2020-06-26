@@ -127,12 +127,15 @@ type
     message*: Message  ## Optionally. New incoming message of any kind - text, photo, sticker, etc.
 
 
+template loadval(key: string, v: untyped, fn: untyped) =
+  if obj.hasKey(`key`):
+    result.`v` = obj[`key`].`fn`()
+
+
 proc newUser*(obj: JsonNode): User =
   result = User(id: obj["id"].getInt(), first_name: obj["first_name"].getStr())
-  if obj.hasKey("last_name"):
-    result.last_name = obj["last_name"].getStr()
-  if obj.hasKey("username"):
-    result.username = obj["username"].getStr()
+  loadval("last_name", last_name, getStr)
+  loadval("username", username, getStr)
 
 proc newChat*(obj: JsonNode): Chat =
   result = Chat(id: obj["id"].getInt())
@@ -147,16 +150,11 @@ proc newChat*(obj: JsonNode): Chat =
     result.`type` = CHATTYPE_CHANNEL
   else:
     discard
-  if obj.hasKey("title"):
-    result.title = obj["title"].getStr()
-  if obj.hasKey("first_name"):
-    result.first_name = obj["first_name"].getStr()
-  if obj.hasKey("last_name"):
-    result.last_name = obj["last_name"].getStr()
-  if obj.hasKey("username"):
-    result.username = obj["username"].getStr()
-  if obj.hasKey("all_members_are_administrators"):
-    result.all_members_are_administrators = obj["all_members_are_administrators"].getBool()
+  loadval("title", title, getStr)
+  loadval("first_name", first_name, getStr)
+  loadval("last_name", last_name, getStr)
+  loadval("username", username, getStr)
+  loadval("all_members_are_administrators", all_members_are_administrators, getBool)
 
 proc newMessage*(obj: JsonNode): Message =
   result = Message(
