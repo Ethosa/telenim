@@ -4,9 +4,11 @@ import
   httpclient,
   json,
   utils,
-  consts,
   os,
-  macros
+  macros,
+
+  consts,
+  types
 when defined(debug):
   import logging
 
@@ -16,13 +18,22 @@ export
 
 
 type
+  TelegramMessageHandler* = proc(event: Message): Future[void]
+  TelegramUpdateHandler* = proc(event: Update): Future[void]
+  TelegramJsonHandler* = proc(event: JsonNode): Future[void]
+
   TelegramApiRef* = ref object
     running*: bool
     access_token: string
     client: AsyncHttpClient
 
 
-var last_event: int = 0
+var
+  last_event: int = 0
+  tmessage_handler*: TelegramMessageHandler
+  tupdate_handler*: TelegramUpdateHandler
+  tjson_handler*: TelegramJsonHandler
+
 if existsFile("botinfo.json"):
   var botinfo: JsonNode = parseFile("botinfo.json")
   last_event = botinfo["offset"].getInt()
@@ -95,3 +106,36 @@ else:
     for arg in callable[1..^1]:
       params.add(newTree(nnkExprColonExpr, arg[0].toStrLit(), arg[1]))
     result.add(newCall("%*", params))
+
+
+macro `@`*(o: TelegramApiRef, field, stmtlist: untyped): untyped =
+  var arg = field[1]
+  case $field[0]
+  of "message":
+    result = quote do:
+      tmessage_handler =
+        proc(`arg`: Message) {.async.} =
+          `stmtlist`
+  of "update":
+    result = quote do:
+      tupdate_handler =
+        proc(`arg`: Update) {.async.} =
+          `stmtlist`
+  of "jupdate":
+    result = quote do:
+      tjson_handler =
+        proc(`arg`: JsonNode) {.async.} =
+          `stmtlist`
+  else:
+    discard
+
+template listen*(o: TelegramApiRef): untyped =
+  proc listenHandler {.async.} =
+    for event in o.pollEvents():
+      if not tjson_handler.isNil():
+        await tjson_handler(event)
+      if not tupdate_handler.isNil():
+        await tupdate_handler(newUpdate(event))
+      if not tmessage_handler.isNil() and event.hasKey("message"):
+        await tmessage_handler(newMessage(event["message"]))
+  waitFor listenHandler()

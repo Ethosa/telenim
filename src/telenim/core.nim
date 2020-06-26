@@ -1,7 +1,7 @@
 import
   core/consts,
+  core/types,
   core/bot
 
 export
-  consts,
-  bot
+  consts, types, bot
