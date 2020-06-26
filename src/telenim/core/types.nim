@@ -287,14 +287,16 @@ proc newMessage*(obj: JsonNode): Message =
     result.photo_sizes = @[]
     for i in obj["photo_sizes"].items():
       result.photo_sizes.add(newPhotoSize(i))
+
   if obj.hasKey("new_chat_photo"):
     result.new_chat_photo = @[]
     for i in obj["new_chat_photo"].items():
       result.new_chat_photo.add(newPhotoSize(i))
+
   if obj.hasKey("entities"):
     result.entities = @[]
     for i in obj["entities"].items():
-      result.entities.add(newPhotoSize(i))
+      result.entities.add(newMessageEntities(i))
 
 
 proc newUpdate*(obj: JsonNode): Update =
