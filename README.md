@@ -5,7 +5,8 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![Nim language-plastic](https://github.com/Ethosa/yukiko/blob/master/nim-lang.svg)](https://github.com/Ethosa/yukiko/blob/master/nim-lang.svg)
 [![License](https://img.shields.io/github/license/Ethosa/telenim)](https://github.com/Ethosa/telenim/blob/master/LICENSE)
-[![time tracker](https://wakatime.com/badge/github/Ethosa/telenim.svg)](https://wakatime.com/badge/github/Ethosa/telenim)
+[![time tracker](https://wakatime.com/badge/github/Ethosa/telenim.svg)](https://wakatime.com/badge/github/Ethosa/telenim)  
+[![Tests](https://github.com/Ethosa/telenim/workflows/Tests/badge.svg)](https://github.com/Ethosa/telenim/blob/master/tests)
 [![gh-pages](https://github.com/Ethosa/telenim/workflows/gh-pages/badge.svg)](https://ethosa.github.io/telenim/telenim.html)
 
 </div>
