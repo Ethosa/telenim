@@ -101,9 +101,9 @@ type
     file_size*: int  ## Optionally. File size
 
   Voice* = ref object
-    file_id*: int  ## Unique file identifier
+    file_id*: string  ## Unique file identifier
     duration*: int  ## Audio file duration specified by sender
-    mime_type*: int  ## Optionally. MIME file specified by the sender
+    mime_type*: string  ## Optionally. MIME file specified by the sender
     file_size*: int  ##  Optionally. File size
 
   Contact* = ref object
@@ -157,6 +157,35 @@ proc newChat*(obj: JsonNode): Chat =
   loadval("last_name", last_name, getStr)
   loadval("username", username, getStr)
   loadval("all_members_are_administrators", all_members_are_administrators, getBool)
+
+proc newPhotoSize*(obj: JsonNode): PhotoSize =
+  ## Creates a new PhotoSize from `obj`.
+  result = PhotoSize(file_id: obj["file_id"].getStr(),
+    width: obj["width"].getInt(), height: obj["height"].getInt())
+  loadval("file_size", file_size, getInt)
+
+proc newVideo*(obj: JsonNode): Video =
+  ## Creates a new Voice object from `obj`.
+  result = Video(
+    file_id: obj["file_id"].getStr(), duration: obj["duration"].getInt(),
+    width: obj["width"].getInt(), height: obj["height"].getInt()
+  )
+  loadval("mime_type", mime_type, getStr)
+  loadval("file_size", file_size, getInt)
+  if obj.hasKey("thumb"):
+    result.thumb = newPhotoSize(obj["thumb"])
+
+proc newVoice*(obj: JsonNode): Voice =
+  ## Creates a new Voice object from `obj`.
+  result = Voice(file_id: obj["file_id"].getStr(), duration: obj["duration"].getInt())
+  loadval("mime_type", mime_type, getStr)
+  loadval("file_size", file_size, getInt)
+
+proc newContact*(obj: JsonNode): Contact =
+  ## Creates a new Contact object from `obj`.
+  result = Contact(phone_number: obj["phone_number"].getStr(), first_name: obj["first_name"].getStr())
+  loadval("first_name", first_name, getStr)
+  loadval("user_id", user_id, getInt)
 
 proc newLocation*(obj: JsonNode): Location =
   ## Creates a new Location object from `obj`.
