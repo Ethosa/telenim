@@ -15,6 +15,10 @@ Venue	telenim/core/types.html#Venue	types: Venue
 Update	telenim/core/types.html#Update	types: Update	
 newUser	telenim/core/types.html#newUser,JsonNode	types: newUser(obj: JsonNode): User	
 newChat	telenim/core/types.html#newChat,JsonNode	types: newChat(obj: JsonNode): Chat	
+newPhotoSize	telenim/core/types.html#newPhotoSize,JsonNode	types: newPhotoSize(obj: JsonNode): PhotoSize	
+newVideo	telenim/core/types.html#newVideo,JsonNode	types: newVideo(obj: JsonNode): Video	
+newVoice	telenim/core/types.html#newVoice,JsonNode	types: newVoice(obj: JsonNode): Voice	
+newContact	telenim/core/types.html#newContact,JsonNode	types: newContact(obj: JsonNode): Contact	
 newLocation	telenim/core/types.html#newLocation,JsonNode	types: newLocation(obj: JsonNode): Location	
 newVenue	telenim/core/types.html#newVenue,JsonNode	types: newVenue(obj: JsonNode): Venue	
 newMessage	telenim/core/types.html#newMessage,JsonNode	types: newMessage(obj: JsonNode): Message	

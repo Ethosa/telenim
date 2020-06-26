@@ -195,9 +195,9 @@ function main() {
   file_size*: int              ## Optionally. File size"><wbr />Video<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Voice"
     title="Voice = ref object
-  file_id*: int                ## Unique file identifier
+  file_id*: string             ## Unique file identifier
   duration*: int               ## Audio file duration specified by sender
-  mime_type*: int              ## Optionally. MIME file specified by the sender
+  mime_type*: string           ## Optionally. MIME file specified by the sender
   file_size*: int              ## Optionally. File size"><wbr />Voice<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Contact"
     title="Contact = ref object
@@ -229,6 +229,14 @@ function main() {
     title="newUser(obj: JsonNode): User"><wbr />new<wbr />User<span class="attachedType">User</span></a></li>
   <li><a class="reference" href="#newChat%2CJsonNode"
     title="newChat(obj: JsonNode): Chat"><wbr />new<wbr />Chat<span class="attachedType">Chat</span></a></li>
+  <li><a class="reference" href="#newPhotoSize%2CJsonNode"
+    title="newPhotoSize(obj: JsonNode): PhotoSize"><wbr />new<wbr />Photo<wbr />Size<span class="attachedType">PhotoSize</span></a></li>
+  <li><a class="reference" href="#newVideo%2CJsonNode"
+    title="newVideo(obj: JsonNode): Video"><wbr />new<wbr />Video<span class="attachedType">Video</span></a></li>
+  <li><a class="reference" href="#newVoice%2CJsonNode"
+    title="newVoice(obj: JsonNode): Voice"><wbr />new<wbr />Voice<span class="attachedType">Voice</span></a></li>
+  <li><a class="reference" href="#newContact%2CJsonNode"
+    title="newContact(obj: JsonNode): Contact"><wbr />new<wbr />Contact<span class="attachedType">Contact</span></a></li>
   <li><a class="reference" href="#newLocation%2CJsonNode"
     title="newLocation(obj: JsonNode): Location"><wbr />new<wbr />Location<span class="attachedType">Location</span></a></li>
   <li><a class="reference" href="#newVenue%2CJsonNode"
@@ -405,9 +413,9 @@ function main() {
 </dd>
 <a id="Voice"></a>
 <dt><pre><a href="types.html#Voice"><span class="Identifier">Voice</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
-  <span class="Identifier">file_id</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>                <span class="Comment">## Unique file identifier</span>
+  <span class="Identifier">file_id</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>             <span class="Comment">## Unique file identifier</span>
   <span class="Identifier">duration</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>               <span class="Comment">## Audio file duration specified by sender</span>
-  <span class="Identifier">mime_type</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>              <span class="Comment">## Optionally. MIME file specified by the sender</span>
+  <span class="Identifier">mime_type</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>           <span class="Comment">## Optionally. MIME file specified by the sender</span>
   <span class="Identifier">file_size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>              <span class="Comment">## Optionally. File size</span>
   </pre></dt>
 <dd>
@@ -478,6 +486,34 @@ Creates a new User object from <tt class="docutils literal"><span class="pre">ob
 Creates a new Chat object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
 
 </dd>
+<a id="newPhotoSize,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newPhotoSize%2CJsonNode"><span class="Identifier">newPhotoSize</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#PhotoSize"><span class="Identifier">PhotoSize</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new PhotoSize from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
+<a id="newVideo,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newVideo%2CJsonNode"><span class="Identifier">newVideo</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Video"><span class="Identifier">Video</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Voice object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
+<a id="newVoice,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newVoice%2CJsonNode"><span class="Identifier">newVoice</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Voice"><span class="Identifier">Voice</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Voice object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
+<a id="newContact,JsonNode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newContact%2CJsonNode"><span class="Identifier">newContact</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Contact"><span class="Identifier">Contact</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Contact object from <tt class="docutils literal"><span class="pre">obj</span></tt>.
+
+</dd>
 <a id="newLocation,JsonNode"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#newLocation%2CJsonNode"><span class="Identifier">newLocation</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">JsonNode</span><span class="Other">)</span><span class="Other">:</span> <a href="types.html#Location"><span class="Identifier">Location</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -516,7 +552,7 @@ Creates a new Update object from <tt class="docutils literal"><span class="pre">
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-26 08:52:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-26 09:16:07 UTC</small>
       </div>
     </div>
   </div>
