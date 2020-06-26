@@ -133,11 +133,13 @@ template loadval(key: string, v: untyped, fn: untyped) =
 
 
 proc newUser*(obj: JsonNode): User =
+  ## Creates a new User object from `obj`.
   result = User(id: obj["id"].getInt(), first_name: obj["first_name"].getStr())
   loadval("last_name", last_name, getStr)
   loadval("username", username, getStr)
 
 proc newChat*(obj: JsonNode): Chat =
+  ## Creates a new Chat object from `obj`.
   result = Chat(id: obj["id"].getInt())
   case obj["type"].getStr()
   of "private":
@@ -156,7 +158,17 @@ proc newChat*(obj: JsonNode): Chat =
   loadval("username", username, getStr)
   loadval("all_members_are_administrators", all_members_are_administrators, getBool)
 
+proc newLocation*(obj: JsonNode): Location =
+  ## Creates a new Location object from `obj`.
+  result = Location(longitude: obj["longitude"].getFloat(), latitude: obj["latitude"].getFloat())
+
+proc newVenue*(obj: JsonNode): Venue =
+  ## Creates a new Venue object from `obj`.
+  result = Venue(location: newLocation(obj["location"]), title: obj["title"].getStr(), address: obj["address"].getStr())
+  loadval("foursquare_id", foursquare_id, getStr)
+
 proc newMessage*(obj: JsonNode): Message =
+  ## Creates a new Message object from `obj`.
   result = Message(
     message_id: obj["message_id"].getInt(), date: obj["date"].getInt()
   )
@@ -166,8 +178,13 @@ proc newMessage*(obj: JsonNode): Message =
     result.`from` = newUser(obj["from"])
   if obj.hasKey("chat"):
     result.chat = newChat(obj["chat"])
+  if obj.hasKey("location"):
+    result.location = newLocation(obj["location"])
+  if obj.hasKey("venue"):
+    result.venue = newVenue(obj["venue"])
 
 proc newUpdate*(obj: JsonNode): Update =
+  ## Creates a new Update object from `obj`.
   result = Update(update_id: obj["update_id"].getInt())
   if obj.hasKey("message"):
     result.message = newMessage(obj["message"])

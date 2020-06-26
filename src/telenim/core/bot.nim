@@ -23,7 +23,7 @@ type
   TelegramJsonHandler* = proc(event: JsonNode): Future[void]
 
   TelegramApiRef* = ref object
-    running*: bool
+    running*: bool  ## bot is running. Used in `pollEvents`.
     access_token: string
     client: AsyncHttpClient
 
@@ -56,10 +56,11 @@ proc callMethod*(self: TelegramApiRef, method_name: string, args: JsonNode = %*{
   ## Arguments:
   ## - `method_name` is a name of called method.
   ## - `args` - method arguments.
-  var url = API_URL & self.access_token & "/" & method_name
-  var response = await self.client.request(
-    url, "POST", args.encode(), newHttpHeaders({"Content-type": "application/x-www-form-urlencoded"})
-  )
+  var
+    url = API_URL & self.access_token & "/" & method_name
+    response = await self.client.request(
+      url, "POST", args.encode(), newHttpHeaders({"Content-type": "application/x-www-form-urlencoded"})
+    )
   result = parseJson await response.body
 
   when defined(debug):
@@ -98,9 +99,23 @@ when defined(dotOperators):
     result.add(newCall("%*", params))
 
   template `.()`*(o: TelegramApiRef, field: untyped, args: varargs[untyped]): Future[JsonNode] =
+    ## Provides convenient wrapper for `callMethod`.
+    ##
+    ## Example:
+    ##
+    ## .. code-block:: nim
+    ##
+    ##    discard await tApi.sendMessage(chat_id=123, text="hello, world!")
     call(o, field, args)
 else:
   macro `~`*(o: TelegramApiRef, callable: untyped): untyped =
+    ## Provides convenient wrapper for `callMethod`.
+    ##
+    ## Example:
+    ##
+    ## .. code-block:: nim
+    ##
+    ##    discard await tApi~sendMessage(chat_id=123, text="hello, world!")
     result = newCall("callMethod", o, newLit($callable[0]))
     var params = newNimNode(nnkTableConstr)
     for arg in callable[1..^1]:
@@ -109,6 +124,14 @@ else:
 
 
 macro `@`*(o: TelegramApiRef, field, stmtlist: untyped): untyped =
+  ## provides convenitent wrapper for creating handlers.
+  ##
+  ## Usage:
+  ##
+  ## .. code-block:: nim
+  ##
+  ##    tApi@message(event):
+  ##      echo event.text
   var arg = field[1]
   case $field[0]
   of "message":
@@ -130,6 +153,7 @@ macro `@`*(o: TelegramApiRef, field, stmtlist: untyped): untyped =
     discard
 
 template listen*(o: TelegramApiRef): untyped =
+  ## Starts longpoll listening.
   proc listenHandler {.async.} =
     for event in o.pollEvents():
       if not tjson_handler.isNil():
