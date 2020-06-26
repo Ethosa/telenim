@@ -211,6 +211,14 @@ proc newMessage*(obj: JsonNode): Message =
     result.location = newLocation(obj["location"])
   if obj.hasKey("venue"):
     result.venue = newVenue(obj["venue"])
+  if obj.hasKey("video"):
+    result.video = newVideo(obj["video"])
+  if obj.hasKey("voice"):
+    result.voice = newVoice(obj["voice"])
+  if obj.hasKey("photo_sizes"):
+    result.photo_sizes = @[]
+    for i in obj["photo_sizes"].items():
+      result.photo_sizes.add(newPhotoSize(i))
 
 proc newUpdate*(obj: JsonNode): Update =
   ## Creates a new Update object from `obj`.
