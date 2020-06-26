@@ -138,6 +138,7 @@ proc newUser*(obj: JsonNode): User =
   loadval("last_name", last_name, getStr)
   loadval("username", username, getStr)
 
+
 proc newChat*(obj: JsonNode): Chat =
   ## Creates a new Chat object from `obj`.
   result = Chat(id: obj["id"].getInt())
@@ -158,11 +159,49 @@ proc newChat*(obj: JsonNode): Chat =
   loadval("username", username, getStr)
   loadval("all_members_are_administrators", all_members_are_administrators, getBool)
 
+
 proc newPhotoSize*(obj: JsonNode): PhotoSize =
   ## Creates a new PhotoSize from `obj`.
   result = PhotoSize(file_id: obj["file_id"].getStr(),
     width: obj["width"].getInt(), height: obj["height"].getInt())
   loadval("file_size", file_size, getInt)
+
+
+proc newMessageEntities*(obj: JsonNode): MessageEntity =
+  ## Creates a new MessageEntity object from `obj`.
+  result = MessageEntity(
+    `type`: obj["type"].getStr(), offset: obj["offset"].getInt(),
+    length: obj["length"].getInt())
+  loadval("url", url, getStr)
+
+
+proc newAudio*(obj: JsonNode): Audio =
+  ## Creates a new Audio object from `obj`.
+  result = Audio(file_id: obj["file_id"].getStr(), duration: obj["duration"].getInt())
+  loadval("file_size", file_size, getInt)
+  loadval("mime_type", mime_type, getStr)
+  loadval("performer", performer, getStr)
+  loadval("title", title, getStr)
+
+
+proc newDocument*(obj: JsonNode): Document =
+  ## Creates a new Document object from `obj`.
+  result = Document(file_id: obj["file_id"].getStr())
+  if obj.hasKey("thumb"):
+    result.thumb = newPhotoSize(obj["thumb"])
+  loadval("file_name", file_name, getStr)
+  loadval("mime_type", mime_type, getStr)
+  loadval("file_size", file_size, getInt)
+
+
+proc newSticker*(obj: JsonNode): Sticker =
+  ## Creates a new Sticker object from `obj`.
+  result = Sticker(file_id: obj["file_id"].getStr(),
+    width: obj["width"].getInt(), height: obj["height"].getInt())
+  if obj.hasKey("thumb"):
+    result.thumb = newPhotoSize(obj["thumb"])
+  loadval("file_size", file_size, getInt)
+
 
 proc newVideo*(obj: JsonNode): Video =
   ## Creates a new Voice object from `obj`.
@@ -175,11 +214,13 @@ proc newVideo*(obj: JsonNode): Video =
   if obj.hasKey("thumb"):
     result.thumb = newPhotoSize(obj["thumb"])
 
+
 proc newVoice*(obj: JsonNode): Voice =
   ## Creates a new Voice object from `obj`.
   result = Voice(file_id: obj["file_id"].getStr(), duration: obj["duration"].getInt())
   loadval("mime_type", mime_type, getStr)
   loadval("file_size", file_size, getInt)
+
 
 proc newContact*(obj: JsonNode): Contact =
   ## Creates a new Contact object from `obj`.
@@ -187,24 +228,42 @@ proc newContact*(obj: JsonNode): Contact =
   loadval("first_name", first_name, getStr)
   loadval("user_id", user_id, getInt)
 
+
 proc newLocation*(obj: JsonNode): Location =
   ## Creates a new Location object from `obj`.
   result = Location(longitude: obj["longitude"].getFloat(), latitude: obj["latitude"].getFloat())
+
 
 proc newVenue*(obj: JsonNode): Venue =
   ## Creates a new Venue object from `obj`.
   result = Venue(location: newLocation(obj["location"]), title: obj["title"].getStr(), address: obj["address"].getStr())
   loadval("foursquare_id", foursquare_id, getStr)
 
+
 proc newMessage*(obj: JsonNode): Message =
   ## Creates a new Message object from `obj`.
-  result = Message(
-    message_id: obj["message_id"].getInt(), date: obj["date"].getInt()
-  )
-  if obj.hasKey("text"):
-    result.text = obj["text"].getStr()
+  result = Message(message_id: obj["message_id"].getInt(), date: obj["date"].getInt())
+
+  loadval("text", text, getStr)
+  loadval("forward_date", forward_date, getInt)
+  loadval("migrate_to_chat_id", migrate_to_chat_id, getInt)
+  loadval("migrate_from_chat_id", migrate_from_chat_id, getInt)
+  loadval("caption", caption, getStr)
+  loadval("new_chat_title", new_chat_title, getStr)
+  loadval("delete_chat_photo", delete_chat_photo, getBool)
+  loadval("group_chat_created", group_chat_created, getBool)
+  loadval("supergroup_chat_created", supergroup_chat_created, getBool)
+  loadval("channel_chat_created", channel_chat_created, getBool)
+
   if obj.hasKey("from"):
     result.`from` = newUser(obj["from"])
+  if obj.hasKey("forward_from"):
+    result.forward_from = newUser(obj["forward_from"])
+  if obj.hasKey("new_chat_member"):
+    result.new_chat_member = newUser(obj["new_chat_member"])
+  if obj.hasKey("left_chat_member"):
+    result.left_chat_member = newUser(obj["left_chat_member"])
+
   if obj.hasKey("chat"):
     result.chat = newChat(obj["chat"])
   if obj.hasKey("location"):
@@ -215,10 +274,28 @@ proc newMessage*(obj: JsonNode): Message =
     result.video = newVideo(obj["video"])
   if obj.hasKey("voice"):
     result.voice = newVoice(obj["voice"])
+  if obj.hasKey("sticker"):
+    result.sticker = newSticker(obj["sticker"])
+  if obj.hasKey("document"):
+    result.document = newDocument(obj["document"])
+  if obj.hasKey("audio"):
+    result.audio = newAudio(obj["audio"])
+  if obj.hasKey("pinned_message"):
+    result.pinned_message = newMessage(obj["pinned_message"])
+
   if obj.hasKey("photo_sizes"):
     result.photo_sizes = @[]
     for i in obj["photo_sizes"].items():
       result.photo_sizes.add(newPhotoSize(i))
+  if obj.hasKey("new_chat_photo"):
+    result.new_chat_photo = @[]
+    for i in obj["new_chat_photo"].items():
+      result.new_chat_photo.add(newPhotoSize(i))
+  if obj.hasKey("entities"):
+    result.entities = @[]
+    for i in obj["entities"].items():
+      result.entities.add(newPhotoSize(i))
+
 
 proc newUpdate*(obj: JsonNode): Update =
   ## Creates a new Update object from `obj`.
